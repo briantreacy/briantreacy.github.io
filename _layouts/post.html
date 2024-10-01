@@ -3,15 +3,32 @@ layout: default
 ---
 <link href="/css/override.css" rel="stylesheet" type="text/css">
 
+<!-- MathJax configuration for inline and block math -->
 <script>
 MathJax = {
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
+    inlineMath: [['$', '$'], ['\\(', '\\)']],  // Supports $...$ for inline math
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],  // Supports $$...$$ for block math
+  },
+  svg: {
+    fontCache: 'global'
   }
 };
 </script>
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<!-- Configure ```math blocks -->
+<script type="text/x-mathjax-config">
+MathJax = {
+  tex: {
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    ignoreHtmlClass: '.*',   // Ignore classes except those explicitly marked for processing
+    processHtmlClass: 'math' // Class to process for math
+  }
+};
 </script>
 
 <script type="text/javascript" id="MathJax-script" async
