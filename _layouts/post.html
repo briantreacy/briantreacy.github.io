@@ -3,12 +3,12 @@ layout: default
 ---
 <link href="/css/override.css" rel="stylesheet" type="text/css">
 
-<!-- MathJax configuration for inline and block math -->
+<!-- MathJax configuration -->
 <script>
 MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],  // Supports $...$ for inline math
-    displayMath: [['$$', '$$'], ['\\[', '\\]']],  // Supports $$...$$ for block math
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],  // Supports $$...$$ or \[...\] for block math
   },
   svg: {
     fontCache: 'global'
@@ -18,21 +18,17 @@ MathJax = {
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-<!-- Configure ```math blocks -->
+<!-- Custom MathJax setup for handling block math via ```math blocks -->
 <script type="text/x-mathjax-config">
 MathJax = {
   tex: {
     packages: {'[+]': ['noerrors']}
   },
   options: {
-    ignoreHtmlClass: '.*',   // Ignore classes except those explicitly marked for processing
-    processHtmlClass: 'math' // Class to process for math
+    ignoreHtmlClass: '.*',    // Ignore all classes except those explicitly marked
+    processHtmlClass: 'math'  // Process content with the 'math' class
   }
 };
-</script>
-
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
