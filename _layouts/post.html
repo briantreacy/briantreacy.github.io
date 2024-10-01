@@ -6,43 +6,54 @@ layout: default
 <!-- MathJax configuration -->
 <script>
 MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],  // Supports $...$ for inline math
-    displayMath: [['$$', '$$'], ['\\[', '\\]']],  // Supports $$...$$ or \[...\] for block math
-  },
-  svg: {
-    fontCache: 'global'
-  }
+tex: {
+inlineMath: [['$', '$'], ['\\(', '\\)']], // Supports $...$ for inline math
+displayMath: [['$$', '$$'], ['\\[', '\\]']], // Supports $$...$$ or \[...\] for block math
+},
+svg: {
+fontCache: 'global'
+}
 };
 </script>
 <script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<!-- Custom MathJax setup for handling block math via ```math blocks -->
+<script type="text/x-mathjax-config">
+MathJax = {
+tex: {
+packages: {'[+]': ['noerrors']}
+},
+options: {
+ignoreHtmlClass: '.*', // Ignore all classes except those explicitly marked
+processHtmlClass: 'math' // Process content with the 'math' class
+}
+};
+</script>
 
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {% assign author = page.author | default: site.author %}
-      {%- if author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <span class="p-author h-card" itemprop="name">{{ author }}</span>
-        </span>
-      {%- endif -%}</p>
-  </header>
+<header class="post-header">
+<h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+<p class="post-meta">
+<time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+{{ page.date | date: date_format }}
+</time>
+{% assign author = page.author | default: site.author %}
+{%- if author -%}
+• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+{%- endif -%}</p>
+</header>
 
-  <div class="share-links">
-    {% include sharelinks.html %}
-  </div>
+<div class="share-links">
+{% include sharelinks.html %}
+</div>
 
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content | markdownify | replace: '<pre><code class="language-math">', '<script type="math/tex; mode=display">' | replace: '</code></pre>', '</script>' }}
-    {% include navlinks.html %}
-  </div>
+<div class="post-content e-content" itemprop="articleBody">
+{{ content }}
+{% include navlinks.html %}
+</div>
 
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+<a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
