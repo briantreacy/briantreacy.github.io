@@ -18,19 +18,6 @@ MathJax = {
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-<!-- Custom MathJax setup for handling block math via ```math blocks -->
-<script type="text/x-mathjax-config">
-MathJax = {
-  tex: {
-    packages: {'[+]': ['noerrors']}
-  },
-  options: {
-    ignoreHtmlClass: '.*',    // Ignore all classes except those explicitly marked
-    processHtmlClass: 'math'  // Process content with the 'math' class
-  }
-};
-</script>
-
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
@@ -42,7 +29,9 @@ MathJax = {
       </time>
       {% assign author = page.author | default: site.author %}
       {%- if author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span class="p-author h-card" itemprop="name">{{ author }}</span>
+        </span>
       {%- endif -%}</p>
   </header>
 
@@ -51,7 +40,7 @@ MathJax = {
   </div>
 
   <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+    {{ content | markdownify | replace: '<pre><code class="language-math">', '<script type="math/tex; mode=display">' | replace: '</code></pre>', '</script>' }}
     {% include navlinks.html %}
   </div>
 
