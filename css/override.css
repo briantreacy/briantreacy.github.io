@@ -51,3 +51,9 @@ hr {
   text-align: center;  /* Center the math block */
   font-size: 1.2em;    /* Adjust font size as needed */
 }
+
+/* Ensure that MathJax display math has a margin */
+mjx-container {
+  display: block; /* Ensure MathJax renders it as a block */
+  margin: 1em 0; /* Space around the block */
+}
