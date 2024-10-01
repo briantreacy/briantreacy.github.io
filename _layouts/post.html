@@ -43,4 +43,9 @@ MathJax = {
 </div>
 
 <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    MathJax.typeset(); // This forces MathJax to reprocess the page content
+  });
+</script>  
 </article>
