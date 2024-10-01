@@ -1,7 +1,7 @@
 ## Inferring epidemiological model parameters from viral load data
 
 I present a summary of one of my PhD projects, which outlined a method to estimate the parameters of a class of epidemic models given one had access to the rate of exponential growth $r$ seen in the infected population during the beginning of an epidemic along with viral load data collected during this same period. We demonstrate with an SIR model:
-```$$
+$$
 \begin{equation}
 \begin{aligned}
 \dot{S} &= -\beta S I \\
@@ -9,7 +9,11 @@ I present a summary of one of my PhD projects, which outlined a method to estima
 \dot{R} &= \gamma I
 \end{aligned}
 \end{equation}
-$$```
+$$
+And if I do this
+$$
+\nabla_x
+$$
 Let $\mathcal{A}(\tau, t)$ be the proportion of the infected population at time $t$ that have age-of-infection $\tau$. The disease incidence $i(t)$ is the number of people who became infected at time $t$, while $K(\tau)$ is the probability that someone infected $\tau$ units ago is still infected now. Then,
 ```math
 \begin{align*}
