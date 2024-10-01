@@ -10,7 +10,6 @@ I present a summary of one of my PhD projects, which outlined a method to estima
 \end{aligned}
 \end{equation}
 ```
-$$\nabla_x J(x)$$
 Let $\mathcal{A}(\tau, t)$ be the proportion of the infected population at time $t$ that have age-of-infection $\tau$. The disease incidence $i(t)$ is the number of people who became infected at time $t$, while $K(\tau)$ is the probability that someone infected $\tau$ units ago is still infected now. Then,
 ```math
 \begin{align*}
